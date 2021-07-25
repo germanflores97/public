@@ -1,0 +1,180 @@
+{% extends 'core/base.html' %}
+{% block modulo_actual %}<i class="fas fa-home"></i> Reto técnico{% endblock %}
+{% block content %}
+    {% if programacion %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="font-size: 2rem;">Reto de programación</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 2</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="info-box col-5 bg-success">
+                                <span class="info-box-icon"><i class="fas fa-eye"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Cantidad de respuestas contestadas</span>
+                                    <span class="info-box-number">{{programacion.respuestas_contestadas}}</span>
+                                </div>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="info-box col-5 bg-danger">
+                                <span class="info-box-icon"><i class="fas fa-eye-slash"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Cantidad de respuestas no contestadas</span>
+                                    <span class="info-box-number">{{programacion.respuestas_no_contestadas}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 3</h5>
+                    </div>
+                    <div class="card-body">
+                        Pregunta no respondida debido a un error en la formulación del requerimiento
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 4</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                            <li class="item">
+                                <div class="product-img">
+                                    <i class="far fa-tired h-100 d-inline-block" style="font-size: 50px;"></i>
+                                </div>
+                                <div class="product-info">
+                                    <a href="javascript:void(0)" class="product-title">
+                                        Respuesta con menor número de vistas <span class="badge badge-danger float-right p-4" style="font-size: 2rem;">{{programacion.respuesta_menor_vistas.vistas}}</span>
+                                    </a>
+                                    <span class="product-description">{{programacion.respuesta_menor_vistas.titulo_respuesta}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 5</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3>{{programacion.fecha_creacion.respuesta_antigua.fecha}}</h3>
+                                        <p>{{programacion.fecha_creacion.respuesta_antigua.titulo_respuesta}}</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="javascript:void(0)" class="small-box-footer">Respuesta más antigua</a>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3>{{programacion.fecha_creacion.respuesta_actual.fecha}}</h3>
+                                        <p>{{programacion.fecha_creacion.respuesta_actual.titulo_respuesta}}</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="javascript:void(0)" class="small-box-footer">Respuesta más actual</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if sql %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="font-size: 2rem;">Reto de SQL</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 7, 8 y 9</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="text-center">
+                                    <strong>Respuestas y cantidades</strong>
+                                </p>
+                                <div class="progress-group">
+                                    <span class="progress-text">
+                                        <b>(7)</b> Aeropuerto con mayor movimiento durante el año: {{sql.aeropuerto_mas_vuelos.aeropuerto__nombre_aeropuerto}}
+                                    </span>
+                                    <span class="float-right"><b>{{sql.aeropuerto_mas_vuelos.vuelos_por_año}}</b> vuelos</span>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-primary" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <span class="progress-text">
+                                        <b>(8)</b> Aerolínea con mayor número de vuelos durante el año: {{sql.aerolinea_mas_vuelos.aerolinea__nombre_aerolinea}}
+                                    </span>
+                                    <span class="float-right"><b>{{sql.aerolinea_mas_vuelos.vuelos_por_año}}</b> vuelos</span>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <span class="progress-text">(9) Día con mayor número de vuelos: {{sql.dia_mas_vuelos.dia}}</span>
+                                    <span class="float-right"><b>{{sql.dia_mas_vuelos.vuelos_por_dia}}</b> vuelos</span>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-warning" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Respuesta a la pregunta 10 - Aerolíneas con más de 2 vuelos al día</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                            {% for aerolinea in sql.aerolineas_mas_de_2_vuelos_por_dia %}
+                                <li class="item p-2">
+                                    <div class="product-img">
+                                        <img src="media/{{aerolinea.aerolinea__logo_aerolinea}}" alt="Logo" class="img-size-50">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">
+                                            Aerolínea {{aerolinea.aerolinea__nombre_aerolinea}}<span class="badge badge-warning float-right">{{aerolinea.dia}}</span>
+                                        </a>
+                                        <span class="product-description">
+                                            {{aerolinea.vuelos_por_dia}} vuelos
+                                        </span>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
